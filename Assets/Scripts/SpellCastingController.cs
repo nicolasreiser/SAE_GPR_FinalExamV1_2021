@@ -15,7 +15,14 @@ public class SpellCastingController : MonoBehaviour, IPlayerAction
 
 
     private bool inAction;
+    private float lastSimpleAttackTimestamp = -100;
 
+    public SpellDescription SimpleAttackSpellDescription { get => simpleAttackSpell; }
+
+    private void Start()
+    {
+        Debug.Assert(simpleAttackSpell, "No spell assigned to SpellCastingController.");
+    }
 
     void Update()
     {
@@ -24,7 +31,7 @@ public class SpellCastingController : MonoBehaviour, IPlayerAction
 
         if (!inAction)
         {
-            if (simpleAttack)
+            if (simpleAttack && GetSimpleAttackCooldown() == 0)
             {
                 StartCoroutine(SimpleAttackRoutine());
             }
@@ -39,14 +46,24 @@ public class SpellCastingController : MonoBehaviour, IPlayerAction
     {
         inAction = true;
         animator.SetTrigger(simpleAttackSpell.AnimationVariableName);
+
         yield return new WaitForSeconds(simpleAttackSpell.ProjectileSpawnDelay);
+
         Instantiate(simpleAttackSpell.ProjectilePrefab, castLocationTransform.position, castLocationTransform.rotation);
+
         yield return new WaitForSeconds(simpleAttackSpell.Duration - simpleAttackSpell.ProjectileSpawnDelay);
+
+        lastSimpleAttackTimestamp = Time.time;
         inAction = false;
     }
 
     public bool IsInAction()
     {
         return inAction;
+    }
+
+    public float GetSimpleAttackCooldown()
+    {
+        return Mathf.Max(0, lastSimpleAttackTimestamp + simpleAttackSpell.Cooldown - Time.time);
     }
 }

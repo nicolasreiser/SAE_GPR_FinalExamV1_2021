@@ -2081,10 +2081,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7111353289441474563}
-  simpleAttackPrefab: {fileID: 428208472238148140, guid: 8f137eecfdb312b4ba2dfd66eda62da3, type: 3}
   castLocationTransform: {fileID: 1025611270}
-  simpleAttackDuration: 1
-  simpleAttackSpawnTime: 0.75
+  simpleAttackSpell: {fileID: 11400000, guid: fdae951968a3690458af55414ccaaba8, type: 2}
 --- !u!114 &919132148507359903
 MonoBehaviour:
   m_ObjectHideFlags: 0

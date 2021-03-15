@@ -14,6 +14,8 @@ public class TimedEntitySpawner : MonoBehaviour
 
     void Start()
     {
+        Debug.Assert(targetingManager != null, "TargetingManager is null, injection will fail.");
+
         if (activeOnStart)
         {
             Activate();

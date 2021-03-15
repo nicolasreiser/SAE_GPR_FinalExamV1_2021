@@ -18,7 +18,7 @@ MonoBehaviour:
 '
   SpellIcon: {fileID: 21300000, guid: 5dc5f26eb2281954ea9f360eca7dc1a9, type: 3}
   Duration: 1
-  Cooldown: 10
+  Cooldown: 1
   AnimationVariableName: SimpleAttack
   ProjectilePrefab: {fileID: 428208472238148140, guid: 8f137eecfdb312b4ba2dfd66eda62da3, type: 3}
   ProjectileSpawnDelay: 0.75

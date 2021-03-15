@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 428208472238148137}
   - component: {fileID: 428208472238148138}
   m_Layer: 0
-  m_Name: SimpleAttackProjectile
+  m_Name: ShockProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 428208472238148138}
   velocity: 10
-  damage: 20
+  damage: 50
+  selfdestructTime: 10
 --- !u!54 &428208472238148138
 Rigidbody:
   m_ObjectHideFlags: 0
