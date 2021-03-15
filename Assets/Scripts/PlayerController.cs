@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        playerActions = GetComponents<IPlayerAction>();
+        playerActions = GetComponentsInChildren<IPlayerAction>();
     }
 
     private void Update()

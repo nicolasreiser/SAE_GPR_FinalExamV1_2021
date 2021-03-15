@@ -50,9 +50,9 @@ public class RunnerBehaviour : MonoBehaviour, IAIControlledEntity
 
     private IEnumerator DeathRoutine()
     {
-        animator.SetBool("IsDead", true);
+        animator.SetTrigger("Dead");
         navMeshAgent.isStopped = true;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(15f);
         Destroy(gameObject);
     }
 

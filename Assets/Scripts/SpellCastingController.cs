@@ -10,6 +10,10 @@ public interface IPlayerAction
 public class SpellCastingController : MonoBehaviour, IPlayerAction
 {
     [SerializeField] Animator animator;
+    [SerializeField] GameObject simpleAttackPrefab;
+    [SerializeField] Transform castLocationTransform;
+
+    [SerializeField] float simpleAttackDuration, simpleAttackSpawnTime;
 
     private bool inAction;
 
@@ -28,7 +32,9 @@ public class SpellCastingController : MonoBehaviour, IPlayerAction
     {
         inAction = true;
         animator.SetTrigger("SimpleAttack");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(simpleAttackSpawnTime);
+        Instantiate(simpleAttackPrefab, castLocationTransform.position, castLocationTransform.rotation);
+        yield return new WaitForSeconds(simpleAttackDuration - simpleAttackSpawnTime);
         inAction = false;
     }
 
