@@ -16,10 +16,12 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     Vector2 lookInput;
     float sprintInput;
+    IPlayerAction[] playerActions;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        playerActions = GetComponents<IPlayerAction>();
     }
 
     private void Update()
@@ -30,9 +32,13 @@ public class PlayerController : MonoBehaviour
 
         UpdateFollowTargetRotation();
 
-        float speed = Mathf.Lerp(walkSpeed, sprintSpeed, sprintInput);
-        Vector3 movement = (transform.forward * moveInput.y * speed * Time.deltaTime) + (transform.right * moveInput.x * speed * Time.deltaTime);
-        characterController.Move(movement);
+        float speed = 0;
+        if (CanMove())
+        {
+            speed = Mathf.Lerp(walkSpeed, sprintSpeed, sprintInput);
+            Vector3 movement = (transform.forward * moveInput.y * speed * Time.deltaTime) + (transform.right * moveInput.x * speed * Time.deltaTime);
+            characterController.Move(movement);
+        }
 
         animator.SetFloat("Horizontal", moveInput.x * speed);
         animator.SetFloat("Vertical", moveInput.y * speed);
@@ -67,5 +73,21 @@ public class PlayerController : MonoBehaviour
             angles.x = 40;
         }
         followTransform.localEulerAngles = angles;
+    }
+
+    private bool CanMove()
+    {
+        if (playerActions == null)
+            return true;
+
+        foreach (var action in playerActions)
+        {
+            if (action.IsInAction())
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -14,15 +14,16 @@ public class HeathComponent : MonoBehaviour, IDamagable
     private float health;
     private bool isDead;
 
-    public event System.Action<HeathComponent> HealthChanged;
+    public event System.Action<HeathComponent> Hit;
     public event System.Action<HeathComponent> Death;
 
     public float Health { get => health; }
+    public bool IsAlive { get => !isDead; }
 
     private void Start()
     {
         health = maxHealth;
-        HealthChanged?.Invoke(this);
+        Hit?.Invoke(this);
     }
 
     public void TakeDamage(float amount)
@@ -30,7 +31,7 @@ public class HeathComponent : MonoBehaviour, IDamagable
         if (isDead) return;
 
         health -= amount;
-        HealthChanged.Invoke(this);
+        Hit.Invoke(this);
         if (health <= 0)
         {
             Death?.Invoke(this);
