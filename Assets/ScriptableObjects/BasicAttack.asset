@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe027bb29072f8549ab32d3bf0b20a52, type: 3}
+  m_Name: BasicAttack
+  m_EditorClassIdentifier: 
+  SpellName: ShockBlast
+  Description: 'Fires a ball lighting that quickly flies in a straight line.
+
+'
+  SpellIcon: {fileID: 21300000, guid: 5dc5f26eb2281954ea9f360eca7dc1a9, type: 3}
+  Duration: 1
+  Cooldown: 10
+  AnimationVariableName: SimpleAttack
+  ProjectilePrefab: {fileID: 428208472238148140, guid: 8f137eecfdb312b4ba2dfd66eda62da3, type: 3}
+  ProjectileSpawnDelay: 0.75

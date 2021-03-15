@@ -10,10 +10,9 @@ public interface IPlayerAction
 public class SpellCastingController : MonoBehaviour, IPlayerAction
 {
     [SerializeField] Animator animator;
-    [SerializeField] GameObject simpleAttackPrefab;
     [SerializeField] Transform castLocationTransform;
+    [SerializeField] ProjectileSpellDescription simpleAttackSpell;
 
-    [SerializeField] float simpleAttackDuration, simpleAttackSpawnTime;
 
     private bool inAction;
 
@@ -21,20 +20,28 @@ public class SpellCastingController : MonoBehaviour, IPlayerAction
     void Update()
     {
         bool simpleAttack = Input.GetButtonDown("Fire1");
+        bool specialAttack = Input.GetButtonDown("Fire2");
 
-        if (!inAction && simpleAttack)
+        if (!inAction)
         {
-            StartCoroutine(SimpleAttackRoutine());
+            if (simpleAttack)
+            {
+                StartCoroutine(SimpleAttackRoutine());
+            }
+            else if (specialAttack)
+            {
+                Debug.Log("Trigger special attack");
+            }
         }
     }
 
     private IEnumerator SimpleAttackRoutine()
     {
         inAction = true;
-        animator.SetTrigger("SimpleAttack");
-        yield return new WaitForSeconds(simpleAttackSpawnTime);
-        Instantiate(simpleAttackPrefab, castLocationTransform.position, castLocationTransform.rotation);
-        yield return new WaitForSeconds(simpleAttackDuration - simpleAttackSpawnTime);
+        animator.SetTrigger(simpleAttackSpell.AnimationVariableName);
+        yield return new WaitForSeconds(simpleAttackSpell.ProjectileSpawnDelay);
+        Instantiate(simpleAttackSpell.ProjectilePrefab, castLocationTransform.position, castLocationTransform.rotation);
+        yield return new WaitForSeconds(simpleAttackSpell.Duration - simpleAttackSpell.ProjectileSpawnDelay);
         inAction = false;
     }
 
