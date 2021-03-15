@@ -34,14 +34,14 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
+  m_Name: Movement Layer
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -3471063480847495049}
-    m_Position: {x: 510, y: 330, z: 0}
+    m_Position: {x: 490, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9144052087553414495}
-    m_Position: {x: 500, y: 480, z: 0}
+    m_Position: {x: 490, y: 480, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -81,7 +81,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Base Layer
+    m_Name: Movement Layer
     m_StateMachine: {fileID: -1847591611087797692}
     m_Mask: {fileID: 0}
     m_Motions: []
