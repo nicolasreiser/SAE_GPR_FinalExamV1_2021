@@ -17,7 +17,6 @@ public class Drop : ScriptableObject
     public string Description;
 
     public DropRarity Rarity;
-    public Sprite Icon;
 }
 
 public enum DropRarity
@@ -38,7 +37,7 @@ public static class DropRarityExtensions
                 return Color.white;
 
             case DropRarity.Rare:
-                return Color.blue;
+                return Color.black;
 
             case DropRarity.Epic:
                 return new Color(1, 0, 1, 1);
