@@ -179,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252509904}
   m_LocalRotation: {x: 0.17347227, y: 0.9262395, z: -0.050623212, w: 0.33079463}
-  m_LocalPosition: {x: 0.24900055, y: 1.86208, z: -1.8854713}
+  m_LocalPosition: {x: 0.24900001, y: 1.86208, z: -1.8854719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 759380047}
@@ -2130,7 +2130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationPower: 3
   walkSpeed: 1
-  sprintSpeed: 3
+  sprintSpeed: 4
   followTransform: {fileID: 880625989}
   animator: {fileID: 7111353289441474563}
   rigidbody: {fileID: 4490337636977107581}

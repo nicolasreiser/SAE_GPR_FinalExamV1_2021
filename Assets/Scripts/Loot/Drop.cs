@@ -38,7 +38,7 @@ public static class DropRarityExtensions
                 return Color.white;
 
             case DropRarity.Rare:
-                return Color.black;
+                return Color.blue;
 
             case DropRarity.Epic:
                 return new Color(1, 0, 1, 1);

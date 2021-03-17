@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour
             Vector3 movement = (transform.forward * moveInput.y * speed) + (transform.right * moveInput.x * speed);
             rigidbody.velocity = new Vector3(movement.x, rigidbody.velocity.y, movement.z);
         }
+        else
+        {
+            rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
+        }
 
         animator.SetFloat("Horizontal", moveInput.x * speed);
         animator.SetFloat("Vertical", moveInput.y * speed);
