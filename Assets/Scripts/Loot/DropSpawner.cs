@@ -29,12 +29,15 @@ public class DropSpawner : MonoBehaviour
 
     public GameObject SpawnDropAt(Drop drop, Vector3 position)
     {
+        if (drop == null)
+            return null;
+
         if (dropPrefabTable.ContainsKey(drop))
         {
             var go = Instantiate(dropPrefabTable[drop], position, Quaternion.identity, dropsParent);
 
             //Inject drop reference
-            if(go.TryGetComponent(out IDropOwner dropOwner))
+            if (go.TryGetComponent(out IDropOwner dropOwner))
             {
                 dropOwner.SetDrop(drop);
             }

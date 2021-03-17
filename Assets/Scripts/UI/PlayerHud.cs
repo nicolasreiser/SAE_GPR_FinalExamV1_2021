@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,27 @@ using UnityEngine.UI;
 public class PlayerHud : MonoBehaviour
 {
     [SerializeField] SpellCastingController spellCastingController;
+    [SerializeField] DropCollector dropCollector;
+
     [SerializeField] Image spellIcon;
     [SerializeField] TMPro.TMP_Text spellCooldownText;
+    [SerializeField] GameObject collectUIObject;
 
     private void Start()
     {
         Debug.Assert(spellCastingController != null, "SpellCastingController reference is null");
+        Debug.Assert(dropCollector != null, "DropCollector reference is null");
 
         spellIcon.sprite = spellCastingController.SimpleAttackSpellDescription.SpellIcon;
+
+        dropCollector.DropsInRangeChanged += OnDropsInRangeChanged;
     }
+
+    private void OnDropsInRangeChanged()
+    {
+        collectUIObject.SetActive(dropCollector.DropsInRangeCount > 0);
+    }
+
     private void Update()
     {
         float cooldown = spellCastingController.GetSimpleAttackCooldown();

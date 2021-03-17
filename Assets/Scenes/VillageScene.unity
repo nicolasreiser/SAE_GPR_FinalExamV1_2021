@@ -11863,9 +11863,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 747525276, guid: 6a02c65e5d22fa14b891cdec6695a56e, type: 3}
+      propertyPath: dropCollector
+      value: 
+      objectReference: {fileID: 562764426}
+    - target: {fileID: 747525276, guid: 6a02c65e5d22fa14b891cdec6695a56e, type: 3}
       propertyPath: spellCastingController
       value: 
       objectReference: {fileID: 562764425}
+    - target: {fileID: 3004304138699341551, guid: 6a02c65e5d22fa14b891cdec6695a56e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9194845279064379432, guid: 6a02c65e5d22fa14b891cdec6695a56e, type: 3}
       propertyPath: m_Name
       value: Canvas_PlayerHUD
@@ -16109,6 +16117,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b4081757da93864fa146ff497a9c58a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &562764426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6684469488064594396, guid: 91b6b57c44ad937458ed73bc6b1700c8, type: 3}
+  m_PrefabInstance: {fileID: 562764424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6a32527068fca4b94e8663b0ba13e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &577056401
