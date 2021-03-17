@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float walkSpeed = 1f;
     [SerializeField] float sprintSpeed = 3f;
     [SerializeField] Transform followTransform;
-    [SerializeField] CharacterController characterController;
     [SerializeField] Animator animator;
+    [SerializeField] Rigidbody rigidbody;
 
     Vector2 moveInput;
     Vector2 lookInput;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         playerActions = GetComponentsInChildren<IPlayerAction>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         lookInput = new Vector2(Input.GetAxis("Mouse X"), -Input.GetAxis("Mouse Y"));
@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
         if (CanMove())
         {
             speed = Mathf.Lerp(walkSpeed, sprintSpeed, sprintInput);
-            Vector3 movement = (transform.forward * moveInput.y * speed * Time.deltaTime) + (transform.right * moveInput.x * speed * Time.deltaTime);
-            characterController.Move(movement);
+            Vector3 movement = (transform.forward * moveInput.y * speed) + (transform.right * moveInput.x * speed);
+            rigidbody.velocity = new Vector3(movement.x, rigidbody.velocity.y, movement.z);
         }
 
         animator.SetFloat("Horizontal", moveInput.x * speed);
