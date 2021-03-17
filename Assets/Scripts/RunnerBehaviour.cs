@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public interface IAIControlledEntity
+public interface IEnemy
 {
     void InjectTargetingManager(AiTargetingManager targetingManager);
+    void InjectDropSpawner(DropSpawner dropSpawner);
 }
-public class RunnerBehaviour : MonoBehaviour, IAIControlledEntity
+
+
+public class RunnerBehaviour : MonoBehaviour, IEnemy
 {
     [SerializeField] Material[] skinMaterials;
     [SerializeField] Renderer skinRenderer;
     [SerializeField] Animator animator;
+    [SerializeField] LootDescription lootDescription;
 
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] HeathComponent heathComponent;
+
+    [Header("Injected")]
     [SerializeField] AiTargetingManager targetingManager;
+    [SerializeField] DropSpawner dropSpawner;
 
     Transform target;
 
@@ -24,13 +31,14 @@ public class RunnerBehaviour : MonoBehaviour, IAIControlledEntity
         if (skinMaterials != null && skinMaterials.Length > 0)
             skinRenderer.material = skinMaterials[Random.Range(0, skinMaterials.Length)];
 
+        Debug.Assert(heathComponent != null, "HealthComponent not referenced in inspector");
         heathComponent.Death += OnDeath;
         heathComponent.Hit += OnHit;
 
         Debug.Assert(targetingManager != null, "TargetingManager not injected or referenced.");
-
         target = targetingManager.GetDefaultAITarget();
         navMeshAgent.SetDestination(target.position);
+
     }
 
     private void Update()
@@ -52,7 +60,16 @@ public class RunnerBehaviour : MonoBehaviour, IAIControlledEntity
     {
         animator.SetTrigger("Dead");
         navMeshAgent.isStopped = true;
-        yield return new WaitForSeconds(15f);
+        navMeshAgent.enabled = false;
+
+        yield return new WaitForSeconds(3f);
+
+        if (lootDescription != null)
+        {
+            var drop = lootDescription.SelectDropRandomly();
+            dropSpawner.SpawnDropAt(drop, transform.position);
+        }
+
         Destroy(gameObject);
     }
 
@@ -68,5 +85,10 @@ public class RunnerBehaviour : MonoBehaviour, IAIControlledEntity
     public void InjectTargetingManager(AiTargetingManager targetingManager)
     {
         this.targetingManager = targetingManager;
+    }
+
+    public void InjectDropSpawner(DropSpawner dropSpawner)
+    {
+        this.dropSpawner = dropSpawner;
     }
 }

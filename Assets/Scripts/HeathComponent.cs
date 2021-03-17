@@ -31,13 +31,13 @@ public class HeathComponent : MonoBehaviour, IDamagable
         if (isDead) return;
 
         health -= amount;
-        Hit.Invoke(this);
         if (health <= 0)
         {
             Death?.Invoke(this);
             isDead = true;
             health = 0;
         }
+        Hit.Invoke(this);
     }
 
     public float GetPercentHealth()
