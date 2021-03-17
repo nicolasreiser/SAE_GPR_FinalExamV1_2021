@@ -91,9 +91,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropsPrefabs:
   - Drop: {fileID: 11400000, guid: 869a260729164b94d833c52d3dc0d41f, type: 2}
-    Prefab: {fileID: 5425075434571266107, guid: a6bf680307467ee47a5d3500093fd47f, type: 3}
+    Prefab: {fileID: 6626881115370625022, guid: a038070aaf4a21f4b952909ebebb2ade, type: 3}
   - Drop: {fileID: 11400000, guid: 0bde8caaa21dbb0469af86af5120360f, type: 2}
-    Prefab: {fileID: 5251733297084916390, guid: eccedc1d73eb9694db2ff2a2ae8b7b23, type: 3}
+    Prefab: {fileID: 812510393989137677, guid: d6453b276e3a3464a879fce26c66e2b8, type: 3}
   dropsParent: {fileID: 4465300345308504376}
 --- !u!1 &9197474405910472430
 GameObject:
