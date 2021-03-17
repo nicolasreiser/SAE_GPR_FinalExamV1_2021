@@ -7,6 +7,11 @@ public class LootDescription : ScriptableObject
 {
     [SerializeField] DropProbabilityPair[] drops;
 
+    public void SetDrops(params DropProbabilityPair[] drops)
+    {
+        this.drops = drops;
+    }
+
     public Drop SelectDropRandomly()
     {
         for (int i = 0; i < drops.Length; i++)

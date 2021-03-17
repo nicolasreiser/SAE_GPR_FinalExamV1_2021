@@ -323,6 +323,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4081757da93864fa146ff497a9c58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1404080999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6684469488064594396, guid: 91b6b57c44ad937458ed73bc6b1700c8, type: 3}
+  m_PrefabInstance: {fileID: 7111353290101594991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6a32527068fca4b94e8663b0ba13e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1960668890 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9197474405759586916, guid: bcfad1aaf5703904aa7410139c95257c, type: 3}
@@ -582,6 +593,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 747525276, guid: 6a02c65e5d22fa14b891cdec6695a56e, type: 3}
+      propertyPath: dropCollector
+      value: 
+      objectReference: {fileID: 1404080999}
     - target: {fileID: 747525276, guid: 6a02c65e5d22fa14b891cdec6695a56e, type: 3}
       propertyPath: spellCastingController
       value: 
