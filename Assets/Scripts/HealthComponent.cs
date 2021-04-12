@@ -7,15 +7,15 @@ public interface IDamagable
     void TakeDamage(float amount);
 }
 
-public class HeathComponent : MonoBehaviour, IDamagable
+public class HealthComponent : MonoBehaviour, IDamagable
 {
     [SerializeField] float maxHealth;
 
     private float health;
     private bool isDead;
 
-    public event System.Action<HeathComponent> Hit;
-    public event System.Action<HeathComponent> Death;
+    public event System.Action<HealthComponent> Hit;
+    public event System.Action<HealthComponent> Death;
 
     public float Health { get => health; }
     public bool IsAlive { get => !isDead; }
