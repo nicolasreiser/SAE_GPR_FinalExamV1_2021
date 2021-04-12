@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour
@@ -17,6 +14,15 @@ public class PlayerController : MonoBehaviour
     Vector2 lookInput;
     float sprintInput;
     IPlayerAction[] playerActions;
+
+    private Transform _transform;
+    private static readonly int HORIZONTAL_ANIMATOR_ID = Animator.StringToHash("Horizontal");
+    private static readonly int VERTICAL_ANIMATOR_ID = Animator.StringToHash("Vertical");
+
+    private void Awake()
+    {
+        _transform = transform;
+    }
 
     private void Start()
     {
@@ -36,7 +42,7 @@ public class PlayerController : MonoBehaviour
         if (CanMove())
         {
             speed = Mathf.Lerp(walkSpeed, sprintSpeed, sprintInput);
-            Vector3 movement = (transform.forward * moveInput.y * speed) + (transform.right * moveInput.x * speed);
+            Vector3 movement = _transform.forward * (moveInput.y * speed) + _transform.right * (moveInput.x * speed);
             rigidbody.velocity = new Vector3(movement.x, rigidbody.velocity.y, movement.z);
         }
         else
@@ -44,8 +50,8 @@ public class PlayerController : MonoBehaviour
             rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
         }
 
-        animator.SetFloat("Horizontal", moveInput.x * speed);
-        animator.SetFloat("Vertical", moveInput.y * speed);
+        animator.SetFloat(HORIZONTAL_ANIMATOR_ID, moveInput.x * speed);
+        animator.SetFloat(VERTICAL_ANIMATOR_ID, moveInput.y * speed);
 
         //only rotate the player when moving, allows user to look at the player when idle
         if (moveInput.magnitude > 0.01f)
@@ -60,8 +66,10 @@ public class PlayerController : MonoBehaviour
     private void UpdateFollowTargetRotation()
     {
         //Update follow target rotation
-        followTransform.rotation *= Quaternion.AngleAxis(lookInput.x * rotationPower, Vector3.up);
-        followTransform.rotation *= Quaternion.AngleAxis(lookInput.y * rotationPower, Vector3.right);
+        Quaternion rotation = followTransform.rotation;
+        rotation *= Quaternion.AngleAxis(lookInput.x * rotationPower, Vector3.up);
+        rotation *= Quaternion.AngleAxis(lookInput.y * rotationPower, Vector3.right);
+        followTransform.rotation = rotation;
 
         var angles = followTransform.localEulerAngles;
         angles.z = 0;
@@ -84,7 +92,7 @@ public class PlayerController : MonoBehaviour
         if (playerActions == null)
             return true;
 
-        foreach (var action in playerActions)
+        foreach (var action in playerActions) // think about using foreach, bad for memory management
         {
             if (action.IsInAction())
             {
