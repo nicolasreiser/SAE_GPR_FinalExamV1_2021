@@ -25,6 +25,9 @@ public class RunnerBehaviour : MonoBehaviour, IEnemy
     [SerializeField] DropSpawner dropSpawner;
 
     Transform target;
+    private static readonly int MOVEMENT_SPEED_ANIMATOR_ID = Animator.StringToHash("MovementSpeed");
+    private static readonly int DEAD_ANIMATOR_ID = Animator.StringToHash("Dead");
+    private static readonly int IS_HIT_ANIMATOR_ID = Animator.StringToHash("IsHit");
 
     private void Start()
     {
@@ -43,7 +46,7 @@ public class RunnerBehaviour : MonoBehaviour, IEnemy
 
     private void Update()
     {
-        animator.SetFloat("MovementSpeed", navMeshAgent.velocity.magnitude / navMeshAgent.speed);
+        animator.SetFloat(MOVEMENT_SPEED_ANIMATOR_ID, navMeshAgent.velocity.magnitude / navMeshAgent.speed);
     }
     private void OnHit(HealthComponent obj)
     {
@@ -58,7 +61,7 @@ public class RunnerBehaviour : MonoBehaviour, IEnemy
 
     private IEnumerator DeathRoutine()
     {
-        animator.SetTrigger("Dead");
+        animator.SetTrigger(DEAD_ANIMATOR_ID);
         navMeshAgent.isStopped = true;
         navMeshAgent.enabled = false;
 
@@ -75,19 +78,19 @@ public class RunnerBehaviour : MonoBehaviour, IEnemy
 
     private IEnumerator HitRoutine()
     {
-        animator.SetBool("IsHit", true);
+        animator.SetBool(IS_HIT_ANIMATOR_ID, true);
         navMeshAgent.isStopped = true;
         yield return new WaitForSeconds(1);
-        animator.SetBool("IsHit", false);
+        animator.SetBool(IS_HIT_ANIMATOR_ID, false);
         navMeshAgent.isStopped = false;
     }
 
-    public void InjectTargetingManager(AiTargetingManager targetingManager)
+    public void InjectTargetingManager(AiTargetingManager targetingManager) // think about using a different naming convention to avoid hiding
     {
         this.targetingManager = targetingManager;
     }
 
-    public void InjectDropSpawner(DropSpawner dropSpawner)
+    public void InjectDropSpawner(DropSpawner dropSpawner) // think about using a different naming convention to avoid hiding
     {
         this.dropSpawner = dropSpawner;
     }
