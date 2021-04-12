@@ -36,7 +36,7 @@ public class TimedEntitySpawner : MonoBehaviour
         while (true)
         {
             float waitTime = Random.Range(spawnDelayMinMax.x, spawnDelayMinMax.y);
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(waitTime); // TODO: convert into yield return null with own timer to avoid memory allocation
             SpawnEntity();
         }
     }
@@ -47,7 +47,7 @@ public class TimedEntitySpawner : MonoBehaviour
         var go = Instantiate(prototype, target.position, target.rotation, parent);
 
         //inject dependencies
-        foreach (var component in go.GetComponentsInChildren<IEnemy>())
+        foreach (var component in go.GetComponentsInChildren<IEnemy>()) // TODO: foreach is bad for memory management
         {
             component.InjectTargetingManager(targetingManager);
             component.InjectDropSpawner(dropSpawner);

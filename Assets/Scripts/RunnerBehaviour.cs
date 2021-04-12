@@ -85,12 +85,12 @@ public class RunnerBehaviour : MonoBehaviour, IEnemy
         navMeshAgent.isStopped = false;
     }
 
-    public void InjectTargetingManager(AiTargetingManager targetingManager) // think about using a different naming convention to avoid hiding
+    public void InjectTargetingManager(AiTargetingManager targetingManager) // TODO: think about using a different naming convention to avoid hiding
     {
         this.targetingManager = targetingManager;
     }
 
-    public void InjectDropSpawner(DropSpawner dropSpawner) // think about using a different naming convention to avoid hiding
+    public void InjectDropSpawner(DropSpawner dropSpawner) // TODO: think about using a different naming convention to avoid hiding
     {
         this.dropSpawner = dropSpawner;
     }

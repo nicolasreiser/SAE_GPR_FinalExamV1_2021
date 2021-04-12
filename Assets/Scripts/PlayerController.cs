@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float sprintSpeed = 3f;
     [SerializeField] Transform followTransform;
     [SerializeField] Animator animator;
-    [SerializeField] Rigidbody rigidbody;
+    [SerializeField] Rigidbody rigidbody; // TODO: avoid hiding
 
     Vector2 moveInput;
     Vector2 lookInput;
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         if (playerActions == null)
             return true;
 
-        foreach (var action in playerActions) // think about using foreach, bad for memory management
+        foreach (var action in playerActions) // TODO: think about using foreach, bad for memory management
         {
             if (action.IsInAction())
             {

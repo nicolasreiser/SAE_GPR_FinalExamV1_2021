@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SimpleProjectile : MonoBehaviour
 {
-    [SerializeField] Rigidbody rigidbody;
+    [SerializeField] Rigidbody rigidbody; // TODO: avoid hiding
     [SerializeField] float velocity;
     [SerializeField] float damage;
     [SerializeField] float selfdestructTime = 10;
