@@ -17,7 +17,7 @@ public class DropSpawner : MonoBehaviour
         {
             if (dropPrefabTable.ContainsKey(dp.Drop))
             {
-                Debug.LogWarning("Double definition of drop prefab for drop: " + dp.Drop.DropName);
+                Debug.LogWarning($"Double definition of drop prefab for drop: {dp.Drop.DropName}");
             }
             else
             {
@@ -45,7 +45,7 @@ public class DropSpawner : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No drop prefab defined for " + drop.DropName + " on DropSpawner " + name);
+            Debug.LogError($"No drop prefab defined for {drop.DropName} on DropSpawner {name}");
             return null;
         }
     }
