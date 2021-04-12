@@ -35,7 +35,7 @@ public class HealthComponent : MonoBehaviour, IDamagable
             isDead = true;
             health = 0;
         }
-        Hit.Invoke(this);
+        Hit?.Invoke(this);
     }
 
     public float GetPercentHealth()
