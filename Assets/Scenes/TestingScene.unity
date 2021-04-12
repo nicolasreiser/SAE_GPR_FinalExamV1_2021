@@ -323,6 +323,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4081757da93864fa146ff497a9c58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &896968619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7675646753312853964, guid: bcfad1aaf5703904aa7410139c95257c, type: 3}
+  m_PrefabInstance: {fileID: 9197474404497456318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891d6ea4371c6da43a865af4b676e323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1404080999 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6684469488064594396, guid: 91b6b57c44ad937458ed73bc6b1700c8, type: 3}
@@ -418,6 +429,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 642376241880889020, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: dropSpawner
+      value: 
+      objectReference: {fileID: 896968619}
     - target: {fileID: 642376241880889020, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
       propertyPath: targetingManager
       value: 
