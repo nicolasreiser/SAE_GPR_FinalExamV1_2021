@@ -15,6 +15,8 @@ public class LootTests
             var drop = lootDescription.SelectDropRandomly();
             Assert.AreEqual(null, drop);
         }
+
+        Object.DestroyImmediate(lootDescription);
     }
 
     [Test]
@@ -32,6 +34,8 @@ public class LootTests
             var drop = lootDescription.SelectDropRandomly();
             Assert.AreEqual(testDrop, drop);
         }
-    }
 
+        Object.DestroyImmediate(lootDescription);
+        Object.DestroyImmediate(testDrop);
+    }
 }
