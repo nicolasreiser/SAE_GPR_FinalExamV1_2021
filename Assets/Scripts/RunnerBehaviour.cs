@@ -5,29 +5,32 @@ using UnityEngine.Serialization;
 
 public interface IEnemy
 {
-    void InjectTargetingManager(AiTargetingManager targetingManager);
-    void InjectDropSpawner(DropSpawner dropSpawner);
+    void InjectTargetingManager(AiTargetingManager inhectedTargetingManager);
+    void InjectDropSpawner(DropSpawner injectedDropSpawner);
 }
 
 
 public class RunnerBehaviour : MonoBehaviour, IEnemy
 {
-    [SerializeField] Material[] skinMaterials;
-    [SerializeField] Renderer skinRenderer;
-    [SerializeField] Animator animator;
-    [SerializeField] LootDescription lootDescription;
-
-    [SerializeField] NavMeshAgent navMeshAgent;
-    [FormerlySerializedAs("heathComponent")] [SerializeField] HealthComponent healthComponent;
-
-    [Header("Injected")]
-    [SerializeField] AiTargetingManager targetingManager;
-    [SerializeField] DropSpawner dropSpawner;
-
-    Transform target;
     private static readonly int MOVEMENT_SPEED_ANIMATOR_ID = Animator.StringToHash("MovementSpeed");
     private static readonly int DEAD_ANIMATOR_ID = Animator.StringToHash("Dead");
     private static readonly int IS_HIT_ANIMATOR_ID = Animator.StringToHash("IsHit");
+
+    [SerializeField] private Material[] skinMaterials;
+    [SerializeField] private Renderer skinRenderer;
+    [SerializeField] private Animator animator;
+    [SerializeField] private LootDescription lootDescription;
+
+    [SerializeField] private NavMeshAgent navMeshAgent;
+
+    [FormerlySerializedAs("heathComponent")] 
+    [SerializeField] private HealthComponent healthComponent;
+
+    [Header("Injected")]
+    [SerializeField] private AiTargetingManager targetingManager;
+    [SerializeField] private DropSpawner dropSpawner;
+
+    private Transform target;
 
     private void Start()
     {
@@ -85,13 +88,13 @@ public class RunnerBehaviour : MonoBehaviour, IEnemy
         navMeshAgent.isStopped = false;
     }
 
-    public void InjectTargetingManager(AiTargetingManager targetingManager) // TODO: think about using a different naming convention to avoid hiding
+    public void InjectTargetingManager(AiTargetingManager injectedTargetingManager) 
     {
-        this.targetingManager = targetingManager;
+        targetingManager = injectedTargetingManager;
     }
 
-    public void InjectDropSpawner(DropSpawner dropSpawner) // TODO: think about using a different naming convention to avoid hiding
+    public void InjectDropSpawner(DropSpawner injectedDropSpawner) 
     {
-        this.dropSpawner = dropSpawner;
+        dropSpawner = injectedDropSpawner;
     }
 }

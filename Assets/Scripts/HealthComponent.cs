@@ -7,7 +7,7 @@ public interface IDamagable
 
 public class HealthComponent : MonoBehaviour, IDamagable
 {
-    [SerializeField] float maxHealth;
+    [SerializeField] private float maxHealth;
 
     private float health;
     private bool isDead;

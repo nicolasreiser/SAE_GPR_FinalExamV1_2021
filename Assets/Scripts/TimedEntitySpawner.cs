@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class TimedEntitySpawner : MonoBehaviour
 {
-    [SerializeField] GameObject prototype;
-    [SerializeField] Transform parent;
-    [SerializeField] Transform[] spawnLocations;
+    [SerializeField] private GameObject prototype;
+    [SerializeField] private Transform parent;
+    [SerializeField] private Transform[] spawnLocations;
     
-    [SerializeField] Vector2 spawnDelayMinMax;
-    [SerializeField] bool activeOnStart;
+    [SerializeField] private Vector2 spawnDelayMinMax;
+    [SerializeField] private bool activeOnStart;
 
     [Header("To Inject")]
-    [SerializeField] AiTargetingManager targetingManager;
-    [SerializeField] DropSpawner dropSpawner;
+    [SerializeField] private AiTargetingManager targetingManager;
+    [SerializeField] private DropSpawner dropSpawner;
 
     void Start()
     {

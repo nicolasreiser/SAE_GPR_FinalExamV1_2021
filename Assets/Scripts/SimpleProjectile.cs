@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class SimpleProjectile : MonoBehaviour
 {
-    [SerializeField] Rigidbody rigidbody; // TODO: avoid hiding
-    [SerializeField] float velocity;
-    [SerializeField] float damage;
-    [SerializeField] float selfdestructTime = 10;
+    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private float velocity;
+    [SerializeField] private float damage;
+    [SerializeField] private float selfdestructTime = 10;
 
     private void Start()
     {
-        rigidbody.velocity = transform.forward * velocity;
+        _rigidbody.velocity = transform.forward * velocity;
         Destroy(gameObject, selfdestructTime);
     }
 

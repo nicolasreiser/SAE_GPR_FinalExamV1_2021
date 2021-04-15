@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class LootTests
 {
-    // A Test behaves as an ordinary method
     [Test]
     public void EmptyLootDescriptionTest()
     {

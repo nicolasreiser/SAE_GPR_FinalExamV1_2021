@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class PlayerHud : MonoBehaviour
 {
-    [SerializeField] SpellCastingController spellCastingController;
-    [SerializeField] DropCollector dropCollector;
+    [SerializeField] private SpellCastingController spellCastingController;
+    [SerializeField] private DropCollector dropCollector;
 
-    [SerializeField] Image spellIcon;
-    [SerializeField] TMPro.TMP_Text spellCooldownText;
-    [SerializeField] GameObject collectUIObject;
+    [SerializeField] private Image spellIcon;
+    [SerializeField] private TMPro.TMP_Text spellCooldownText;
+    [SerializeField] private GameObject collectUIObject;
 
     private void Start()
     {

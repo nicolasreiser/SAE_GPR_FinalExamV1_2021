@@ -7,6 +7,7 @@ public class DropCollector : MonoBehaviour
     List<RuntimeDropInstance> dropsInRange = new List<RuntimeDropInstance>();
 
     public event System.Action DropsInRangeChanged;
+    public event System.Action<Drop> DropCollected;
 
     public int DropsInRangeCount { get => dropsInRange.Count; }
 
@@ -29,8 +30,9 @@ public class DropCollector : MonoBehaviour
     {
         Debug.Log($"Collected: {drop.GetDrop().DropName}");
         dropsInRange.Remove(drop);
-        DropsInRangeChanged?.Invoke();
         Destroy(drop.gameObject);
+        DropsInRangeChanged?.Invoke();
+        DropCollected?.Invoke(drop.GetDrop());
     }
 
     private RuntimeDropInstance GetClosestDrop()

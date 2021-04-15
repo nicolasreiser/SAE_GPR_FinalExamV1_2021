@@ -3,17 +3,17 @@
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float rotationPower = 3f;
-    [SerializeField] float walkSpeed = 1f;
-    [SerializeField] float sprintSpeed = 3f;
-    [SerializeField] Transform followTransform;
-    [SerializeField] Animator animator;
-    [SerializeField] Rigidbody rigidbody; // TODO: avoid hiding
+    [SerializeField] private float rotationPower = 3f;
+    [SerializeField] private float walkSpeed = 1f;
+    [SerializeField] private float sprintSpeed = 3f;
+    [SerializeField] private Transform followTransform;
+    [SerializeField] private Animator animator;
+    [SerializeField]  private Rigidbody _rigidbody;
 
-    Vector2 moveInput;
-    Vector2 lookInput;
-    float sprintInput;
-    IPlayerAction[] playerActions;
+    private Vector2 moveInput;
+    private Vector2 lookInput;
+    private float sprintInput;
+    private IPlayerAction[] playerActions;
 
     private Transform _transform;
     private static readonly int HORIZONTAL_ANIMATOR_ID = Animator.StringToHash("Horizontal");
@@ -43,11 +43,11 @@ public class PlayerController : MonoBehaviour
         {
             speed = Mathf.Lerp(walkSpeed, sprintSpeed, sprintInput);
             Vector3 movement = _transform.forward * (moveInput.y * speed) + _transform.right * (moveInput.x * speed);
-            rigidbody.velocity = new Vector3(movement.x, rigidbody.velocity.y, movement.z);
+            _rigidbody.velocity = new Vector3(movement.x, _rigidbody.velocity.y, movement.z);
         }
         else
         {
-            rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
+            _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
         }
 
         animator.SetFloat(HORIZONTAL_ANIMATOR_ID, moveInput.x * speed);

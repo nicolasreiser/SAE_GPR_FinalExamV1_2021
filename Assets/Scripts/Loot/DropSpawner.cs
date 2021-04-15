@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DropSpawner : MonoBehaviour
 {
-    [SerializeField] DropPrefabPair[] dropsPrefabs;
-    [SerializeField] Transform dropsParent;
+    [SerializeField] private DropPrefabPair[] dropsPrefabs;
+    [SerializeField] private Transform dropsParent;
 
-    Dictionary<Drop, GameObject> dropPrefabTable;
+    private Dictionary<Drop, GameObject> dropPrefabTable;
 
     private void Awake()
     {

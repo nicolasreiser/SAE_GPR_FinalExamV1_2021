@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
-    [SerializeField] Canvas canvas;
-    Camera camera;
+    [SerializeField] private Canvas canvas;
+    private Camera mainCamera;
 
     void Start()
     {
-        camera = Camera.main;
-        canvas.worldCamera = camera;
+        mainCamera = Camera.main;
+        canvas.worldCamera = mainCamera;
     }
 
     private void Update()
     {
-        transform.LookAt(transform.position + camera.transform.rotation * Vector3.forward, Vector3.up);
+        transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward, Vector3.up);
     }
 }

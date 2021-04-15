@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RuntimeDropInstance : MonoBehaviour, IDropOwner
 {
-    [SerializeField] TMPro.TMP_Text dropUIText;
+    [SerializeField] private TMPro.TMP_Text dropUIText;
 
     private Drop drop;
 

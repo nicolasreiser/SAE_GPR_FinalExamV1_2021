@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AiTargetingManager : MonoBehaviour
 {
-    [SerializeField] Transform aiTarget;
+    [SerializeField] private Transform aiTarget;
 
 
     public Transform GetDefaultAITarget()

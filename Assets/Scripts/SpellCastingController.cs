@@ -8,9 +8,9 @@ public interface IPlayerAction
 
 public class SpellCastingController : MonoBehaviour, IPlayerAction
 {
-    [SerializeField] Animator animator;
-    [SerializeField] Transform castLocationTransform;
-    [SerializeField] ProjectileSpellDescription simpleAttackSpell;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Transform castLocationTransform;
+    [SerializeField] private ProjectileSpellDescription simpleAttackSpell;
 
 
     private bool inAction;

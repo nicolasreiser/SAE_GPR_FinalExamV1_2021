@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class LootDescription : ScriptableObject
 {
-    [SerializeField] DropProbabilityPair[] drops;
+    [SerializeField] private DropProbabilityPair[] drops;
 
     public void SetDrops(params DropProbabilityPair[] drops)
     {
