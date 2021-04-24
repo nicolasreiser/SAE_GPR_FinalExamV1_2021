@@ -19,6 +19,7 @@ public class RunnerBehaviour : MonoBehaviour, IEnemy
     [SerializeField] private Material[] skinMaterials;
     [SerializeField] private Renderer skinRenderer;
     [SerializeField] private Animator animator;
+    [SerializeField] private CapsuleCollider enemyCollider;
     [SerializeField] private LootDescription lootDescription;
 
     [SerializeField] private NavMeshAgent navMeshAgent;
@@ -67,8 +68,8 @@ public class RunnerBehaviour : MonoBehaviour, IEnemy
         animator.SetTrigger(DEAD_ANIMATOR_ID);
         navMeshAgent.isStopped = true;
         navMeshAgent.enabled = false;
+        enemyCollider.enabled = false;
 
-        yield return new WaitForSeconds(3f);
 
         if (lootDescription != null)
         {
@@ -76,6 +77,7 @@ public class RunnerBehaviour : MonoBehaviour, IEnemy
             dropSpawner.SpawnDropAt(drop, transform.position);
         }
 
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 
