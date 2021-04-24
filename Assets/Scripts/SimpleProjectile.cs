@@ -6,6 +6,7 @@ public class SimpleProjectile : MonoBehaviour
     [SerializeField] private float velocity;
     [SerializeField] private float damage;
     [SerializeField] private float selfdestructTime = 10;
+    [SerializeField] private GameObject electricHitEffectPrefab;
 
     private void Start()
     {
@@ -18,6 +19,9 @@ public class SimpleProjectile : MonoBehaviour
         if (other.TryGetComponent(out IDamagable damagable))
         {
             damagable.TakeDamage(damage);
+            GameObject particle = Instantiate(electricHitEffectPrefab, this.transform.position, this.transform.rotation);
+            Destroy(particle, particle.GetComponent<ParticleSystem>().main.duration);
+            
         }
         Destroy(gameObject);
     }
