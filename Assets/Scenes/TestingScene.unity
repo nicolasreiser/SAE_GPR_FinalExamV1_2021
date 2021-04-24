@@ -334,17 +334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891d6ea4371c6da43a865af4b676e323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1002057758 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1898476560281924099, guid: 6a02c65e5d22fa14b891cdec6695a56e, type: 3}
-  m_PrefabInstance: {fileID: 9194845279407375539}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1404080999 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6684469488064594396, guid: 91b6b57c44ad937458ed73bc6b1700c8, type: 3}
@@ -356,11 +345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6a32527068fca4b94e8663b0ba13e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &1816369348 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 1617938265, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
-  m_PrefabInstance: {fileID: 642376241338003942}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1960668890 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9197474405759586916, guid: bcfad1aaf5703904aa7410139c95257c, type: 3}
@@ -449,10 +433,6 @@ PrefabInstance:
       propertyPath: dropSpawner
       value: 
       objectReference: {fileID: 896968619}
-    - target: {fileID: 642376241880889020, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
-      propertyPath: enemyCollider
-      value: 
-      objectReference: {fileID: 1816369348}
     - target: {fileID: 642376241880889020, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
       propertyPath: targetingManager
       value: 
@@ -571,14 +551,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1252509906, guid: 91b6b57c44ad937458ed73bc6b1700c8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.24900001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1252509906, guid: 91b6b57c44ad937458ed73bc6b1700c8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.8854719
-      objectReference: {fileID: 0}
     - target: {fileID: 7294181437124901707, guid: 91b6b57c44ad937458ed73bc6b1700c8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -623,10 +595,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7545065591762958709, guid: 91b6b57c44ad937458ed73bc6b1700c8, type: 3}
-      propertyPath: dropCollector
-      value: 
-      objectReference: {fileID: 1404080999}
     - target: {fileID: 7958410239221670385, guid: 91b6b57c44ad937458ed73bc6b1700c8, type: 3}
       propertyPath: m_Name
       value: Eve_Player
@@ -644,10 +612,6 @@ PrefabInstance:
       propertyPath: dropCollector
       value: 
       objectReference: {fileID: 1404080999}
-    - target: {fileID: 747525276, guid: 6a02c65e5d22fa14b891cdec6695a56e, type: 3}
-      propertyPath: specialSpellOutline
-      value: 
-      objectReference: {fileID: 1002057758}
     - target: {fileID: 747525276, guid: 6a02c65e5d22fa14b891cdec6695a56e, type: 3}
       propertyPath: spellCastingController
       value: 

@@ -757,7 +757,7 @@ MonoBehaviour:
   spellOutline: {fileID: 1033070793}
   scaleSpeed: 1
   transitionTime: 1
-  specialSpellOutline: {fileID: 0}
+  specialSpellOutline: {fileID: 1898476560281924099}
   specialScaleSpeed: 1
   specialTransitionTime: 1
 --- !u!1 &9194845279382252214

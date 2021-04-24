@@ -45,6 +45,7 @@ public class PlayerHud : MonoBehaviour
         simpleSpellIcon.sprite = spellCastingController.SimpleAttackSpellDescription.SpellIcon;
         spellOutline.enabled = false;
         originalSimpleAbilityScale = simpleAbilityCooldownPackage.transform.localScale;
+        originalSpecialAbilityScale = specialAbilityCooldownPackage.transform.localScale;
         transitionCoroutineSimpleSpell = false;
 
         specialAbilityCooldownPackage.SetActive(false);
