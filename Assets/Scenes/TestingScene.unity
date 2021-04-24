@@ -123,6 +123,71 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 3b8d7512ad4e0b340b91c6ae2463d96d, type: 2}
+--- !u!1001 &271319840
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 642376241880889020, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: dropSpawner
+      value: 
+      objectReference: {fileID: 896968619}
+    - target: {fileID: 642376241880889020, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: targetingManager
+      value: 
+      objectReference: {fileID: 1960668890}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.475
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.040005
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889021, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642376241880889022, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
+      propertyPath: m_Name
+      value: RunnerEnemy (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2265c17630e8fc34db606a8f886cc284, type: 3}
 --- !u!1 &633272378
 GameObject:
   m_ObjectHideFlags: 0
