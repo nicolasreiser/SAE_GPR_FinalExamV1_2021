@@ -18,4 +18,16 @@ public class RuntimeDropInstance : MonoBehaviour, IDropOwner
         dropUIText.text = drop.DropName;
         dropUIText.color = drop.Rarity.ToColor();
     }
+
+    public bool IsAbility()
+    {
+        if(drop.dropType.Equals(DropType.Spell))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

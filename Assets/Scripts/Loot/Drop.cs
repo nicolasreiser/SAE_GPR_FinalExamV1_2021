@@ -15,8 +15,18 @@ public class Drop : ScriptableObject
     public string Description;
 
     public DropRarity Rarity;
+    public DropType dropType;
+
+    [Header("Only use for spells")]
+    public ProjectileSpellDescription projectileSpellDescription;
+
 }
 
+public enum DropType
+{
+    Collectable,
+    Spell
+}
 public enum DropRarity
 {
     Common,

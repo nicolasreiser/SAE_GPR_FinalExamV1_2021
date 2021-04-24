@@ -8,6 +8,7 @@ public class DropCollector : MonoBehaviour
 
     public event System.Action DropsInRangeChanged;
     public event System.Action<Drop> DropCollected;
+    public event System.Action<ProjectileSpellDescription> AbilityFound;
 
     public int DropsInRangeCount { get => dropsInRange.Count; }
 
@@ -30,6 +31,11 @@ public class DropCollector : MonoBehaviour
     {
         Debug.Log($"Collected: {drop.GetDrop().DropName}");
         dropsInRange.Remove(drop);
+
+        if(drop.IsAbility())
+        {
+            AddSkill(drop.GetDrop());
+        }
         Destroy(drop.gameObject);
         DropsInRangeChanged?.Invoke();
         DropCollected?.Invoke(drop.GetDrop());
@@ -59,5 +65,10 @@ public class DropCollector : MonoBehaviour
             dropsInRange.Remove(runtimeDropInstance);
             DropsInRangeChanged?.Invoke();
         }
+    }
+
+    private void AddSkill(Drop drop)
+    {
+        AbilityFound.Invoke(drop.projectileSpellDescription);
     }
 }

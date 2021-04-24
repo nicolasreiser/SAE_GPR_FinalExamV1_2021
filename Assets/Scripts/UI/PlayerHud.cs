@@ -7,29 +7,51 @@ public class PlayerHud : MonoBehaviour
     [SerializeField] private SpellCastingController spellCastingController;
     [SerializeField] private DropCollector dropCollector;
 
-    [SerializeField] private GameObject abilityCooldownPackage;
-    [SerializeField] private Image spellIcon;
-    [SerializeField] private TMPro.TMP_Text spellCooldownText;
+    [SerializeField] private GameObject simpleAbilityCooldownPackage;
+    [SerializeField] private GameObject specialAbilityCooldownPackage;
+
+    [SerializeField] private Image simpleSpellIcon;
+    [SerializeField] private Image specialSpellIcon;
+
+    [SerializeField] private TMPro.TMP_Text simpleSpellCooldownText;
+    [SerializeField] private TMPro.TMP_Text specialSpellCooldownText;
+
     [SerializeField] private GameObject collectUIObject;
+
+    [Header("SimpleAttack")]
     [SerializeField] private Outline spellOutline;
     [SerializeField] private float scaleSpeed;
     [SerializeField] private float transitionTime;
 
-    private Vector3 originalAbilityScale;
+    [Header("SpecialAttack")]
+    [SerializeField] private Outline specialSpellOutline;
+    [SerializeField] private float specialScaleSpeed;
+    [SerializeField] private float specialTransitionTime;
+
+    
+
+
+    private Vector3 originalSimpleAbilityScale;
+    private Vector3 originalSpecialAbilityScale;
     private float remainingTransitionTime;
-    private bool transitionCoroutine;
+    private bool transitionCoroutineSimpleSpell;
+    private bool transitionCoroutineSpecialSpell;
 
     private void Start()
     {
         Debug.Assert(spellCastingController != null, "SpellCastingController reference is null");
         Debug.Assert(dropCollector != null, "DropCollector reference is null");
 
-        spellIcon.sprite = spellCastingController.SimpleAttackSpellDescription.SpellIcon;
+        simpleSpellIcon.sprite = spellCastingController.SimpleAttackSpellDescription.SpellIcon;
         spellOutline.enabled = false;
-        originalAbilityScale = abilityCooldownPackage.transform.localScale;
-        transitionCoroutine = false;
+        originalSimpleAbilityScale = simpleAbilityCooldownPackage.transform.localScale;
+        transitionCoroutineSimpleSpell = false;
+
+        specialAbilityCooldownPackage.SetActive(false);
 
         dropCollector.DropsInRangeChanged += OnDropsInRangeChanged;
+        dropCollector.AbilityFound += AddSpecialAbility;
+
     }
 
     private void OnDropsInRangeChanged()
@@ -39,59 +61,123 @@ public class PlayerHud : MonoBehaviour
 
     private void Update()
     {
-        float cooldown = spellCastingController.GetSimpleAttackCooldown();
-        if (cooldown > 0)
+        float simpleSpellCooldown = spellCastingController.GetSimpleAttackCooldown();
+        float specialSpellCooldown = 0;
+        
+        if(specialAbilityCooldownPackage.activeSelf)
         {
-            spellCooldownText.text = cooldown.ToString("0.0");
-            spellIcon.color = new Color(0.25f, 0.25f, 0.25f, 1);
+            specialSpellCooldown = spellCastingController.GetSpecialAttackCooldown();
+        }
+        
+        // for simple spell
+        if (simpleSpellCooldown > 0)
+        {
+            simpleSpellCooldownText.text = simpleSpellCooldown.ToString("0.0");
+            simpleSpellIcon.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
         else
         {
-            spellCooldownText.text = "";
-            spellIcon.color = Color.white;
+            simpleSpellCooldownText.text = "";
+            simpleSpellIcon.color = Color.white;
+        }
+        // for special spell
+        if (specialSpellCooldown > 0)
+        {
+            specialSpellCooldownText.text = specialSpellCooldown.ToString("0.0");
+            specialSpellIcon.color = new Color(0.25f, 0.25f, 0.25f, 1);
+        }
+        else
+        {
+            specialSpellCooldownText.text = "";
+            specialSpellIcon.color = Color.white;
         }
 
-        if(spellCastingController.IsInAction())
+        // for simple spell
+        if (spellCastingController.IsInAction())
         {
             spellOutline.enabled = true;
-            scaleCastedAbility();
+            scaleCastedAbility(simpleAbilityCooldownPackage.transform);
         }
-        if(!spellCastingController.IsInAction() && cooldown > 0)
+        if(!spellCastingController.IsInAction() && simpleSpellCooldown > 0)
         {
             spellOutline.enabled = false;
-            Resetscale();
+            ResetscaleSimpleSpell();
+        }
+        // for special spell
+        if (spellCastingController.SpecialIsInAction())
+        {
+            specialSpellOutline.enabled = true;
+            scaleCastedAbility(specialAbilityCooldownPackage.transform);
+        }
+        if (!spellCastingController.SpecialIsInAction() && specialSpellCooldown > 0)
+        {
+            specialSpellOutline.enabled = false;
+            ResetscaleSpecialSpell();
         }
     }
 
-    private void scaleCastedAbility()
+    private void scaleCastedAbility(Transform transform)
     {
-        Vector3 scale = abilityCooldownPackage.transform.localScale;
+        Vector3 scale = transform.localScale;
 
         scale += Vector3.one * Time.deltaTime * scaleSpeed;
 
-        abilityCooldownPackage.transform.localScale = scale;
+        transform.localScale = scale;
     }
-    private void Resetscale()
+    private void ResetscaleSimpleSpell()
     {
-        if(!transitionCoroutine)
+        if(!transitionCoroutineSimpleSpell)
         {
-            transitionCoroutine = true;
-            StartCoroutine(TransitionTimeCoroutine());
+            transitionCoroutineSimpleSpell = true;
+            StartCoroutine(TransitionTimeCoroutineForSimpleSpell());
+        }
+    }
+    private void ResetscaleSpecialSpell()
+    {
+        if (!transitionCoroutineSpecialSpell)
+        {
+            transitionCoroutineSpecialSpell = true;
+            StartCoroutine(TransitionTimeCoroutineForSpecialSpell());
         }
     }
 
-    IEnumerator TransitionTimeCoroutine()
+    IEnumerator TransitionTimeCoroutineForSimpleSpell()
     {
         float currentDistance = 0;
-        Vector3 startScale = abilityCooldownPackage.transform.localScale;
+        Vector3 startScale = simpleAbilityCooldownPackage.transform.localScale;
         while (currentDistance <= transitionTime)
         {
             float fractionOfDistance = currentDistance / transitionTime;
-            abilityCooldownPackage.transform.localScale = Vector3.Lerp(startScale, originalAbilityScale,fractionOfDistance);
+            simpleAbilityCooldownPackage.transform.localScale = Vector3.Lerp(startScale, originalSimpleAbilityScale,fractionOfDistance);
 
             currentDistance += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        transitionCoroutine = false;
+        transitionCoroutineSimpleSpell = false;
+    }
+    IEnumerator TransitionTimeCoroutineForSpecialSpell()
+    {
+        float currentDistance = 0;
+        Vector3 startScale = specialAbilityCooldownPackage.transform.localScale;
+        while (currentDistance <= specialTransitionTime)
+        {
+            float fractionOfDistance = currentDistance / specialTransitionTime;
+            specialAbilityCooldownPackage.transform.localScale = Vector3.Lerp(startScale, originalSpecialAbilityScale, fractionOfDistance);
+
+            currentDistance += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        transitionCoroutineSpecialSpell = false;
+    }
+
+    public void AddSpecialAbility(ProjectileSpellDescription projectileSpellDescription)
+    {
+        Debug.Log("Added Ability, name : "+ projectileSpellDescription.SpellName);
+        specialAbilityCooldownPackage.SetActive(true);
+        specialSpellIcon.sprite = projectileSpellDescription.SpellIcon;
+
+
+
+
     }
 }
