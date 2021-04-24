@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1206634978254120701, guid: a038070aaf4a21f4b952909ebebb2ade, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206634978254120701, guid: a038070aaf4a21f4b952909ebebb2ade, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.39293766
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206634978254120701, guid: a038070aaf4a21f4b952909ebebb2ade, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206634978254120701, guid: a038070aaf4a21f4b952909ebebb2ade, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294927360
+      objectReference: {fileID: 0}
     - target: {fileID: 6626881115370625010, guid: a038070aaf4a21f4b952909ebebb2ade, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -17,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 4300000, guid: d4fd32c3fd3334f429f4b01b3068c916, type: 3}
     - target: {fileID: 6626881115370625022, guid: a038070aaf4a21f4b952909ebebb2ade, type: 3}
       propertyPath: m_Name
-      value: Drop01_Sould
+      value: Drop01_Soul Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6626881115370625023, guid: a038070aaf4a21f4b952909ebebb2ade, type: 3}
       propertyPath: m_RootOrder
